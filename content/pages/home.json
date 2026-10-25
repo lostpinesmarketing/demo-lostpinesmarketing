@@ -1,0 +1,37 @@
+{
+  "seo": {
+    "title": "Lost Pines Marketing | Full service digital marketing in Bastrop, TX",
+    "description": "Web development, email marketing, video and photography, event marketing, graphic design, e-commerce, Google Business listings, and digital advertising for businesses and non-profits."
+  },
+  "hero": {
+    "heading": "Full Service Digital Marketing",
+    "subheading": "Do you want your business or non-profit to have greater reach?",
+    "ctaLabel": "Set up a free meeting",
+    "ctaHref": "/contact/"
+  },
+  "services": {
+    "heading": "Our Services",
+    "groups": [
+      {
+        "id": "build",
+        "title": "Build your presence",
+        "description": "What people see when they find you."
+      },
+      {
+        "id": "reach",
+        "title": "Reach the right people",
+        "description": "Getting your message in front of customers, members, and attendees."
+      }
+    ]
+  },
+  "local": {
+    "heading": "Based in Bastrop, Texas",
+    "body": "Working with businesses and non-profits in the Lost Pines."
+  },
+  "cta": {
+    "heading": "Let’s build something great, together.",
+    "body": "What’s on your mind? Drop us a line to schedule a free 30-minute consultation.",
+    "ctaLabel": "Set up a free meeting",
+    "ctaHref": "/contact/"
+  }
+}

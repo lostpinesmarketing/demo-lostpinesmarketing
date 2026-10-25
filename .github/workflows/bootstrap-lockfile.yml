@@ -1,0 +1,35 @@
+# One-time helper: the authoring environment could not reach the npm registry,
+# so this job generates package-lock.json, commits it, and test-builds the site.
+# It is deleted once the lockfile is in the repo.
+name: Bootstrap lockfile
+
+on:
+  push:
+    branches: [main]
+    paths: [package.json, .github/workflows/bootstrap-lockfile.yml]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  lockfile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Generate lockfile and install
+        run: npm install --no-audit --no-fund
+      - name: Commit lockfile
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package-lock.json
+          git diff --cached --quiet || git commit -m "Add package-lock.json (generated in CI)"
+          git push
+      - name: Test build
+        run: npm run build
+        env:
+          DEMO_SLUG: ${{ github.event.repository.name }}
