@@ -485,6 +485,11 @@ a {
   .site-nav .button {
     min-height: 44px;
     padding: 10px 16px;
+    white-space: nowrap;
+  }
+  /* The header button already links to Contact; drop the duplicate text link. */
+  .site-nav__dup {
+    display: none;
   }
   .local__card {
     flex-direction: column;

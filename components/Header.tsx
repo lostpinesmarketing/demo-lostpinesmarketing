@@ -17,7 +17,7 @@ export default function Header({ settings }: { settings: Settings }) {
         <nav aria-label="Main" className="site-nav">
           <ul>
             {settings.nav.map((item) => (
-              <li key={item.href}>
+              <li key={item.href} className={item.href === settings.headerCta.href ? 'site-nav__dup' : undefined}>
                 <Link href={item.href}>{item.label}</Link>
               </li>
             ))}
