@@ -1,18 +1,42 @@
 {
   "seo": {
     "title": "Contact | Lost Pines Marketing",
-    "description": "Schedule a free 30-minute consultation with Lost Pines Marketing in Bastrop, TX."
+    "description": "Set up a free first meeting with Lost Pines Marketing in Bastrop, TX."
   },
-  "heading": "Let’s build something great, together.",
-  "intro": "What’s on your mind? Drop us a line to schedule a free 30-minute consultation.",
+  "heading": "Tell us what you’re working on.",
+  "intro": "The first meeting is free and takes about 30 minutes. Send a note and we’ll find a time that works.",
   "form": {
     "heading": "Send a message",
     "note": "This is a demo form. It does not send or store anything yet.",
     "fields": [
-      { "name": "name", "label": "Your name", "type": "text", "required": true, "autocomplete": "name" },
-      { "name": "email", "label": "Email", "type": "email", "required": true, "autocomplete": "email" },
-      { "name": "organization", "label": "Business or organization", "type": "text", "required": false, "autocomplete": "organization" },
-      { "name": "message", "label": "What’s on your mind?", "type": "textarea", "required": true, "autocomplete": "off" }
+      {
+        "name": "name",
+        "label": "Your name",
+        "type": "text",
+        "required": true,
+        "autocomplete": "name"
+      },
+      {
+        "name": "email",
+        "label": "Email",
+        "type": "email",
+        "required": true,
+        "autocomplete": "email"
+      },
+      {
+        "name": "organization",
+        "label": "Business or organization",
+        "type": "text",
+        "required": false,
+        "autocomplete": "organization"
+      },
+      {
+        "name": "message",
+        "label": "What can we help with?",
+        "type": "textarea",
+        "required": true,
+        "autocomplete": "off"
+      }
     ],
     "submitLabel": "Send message"
   },

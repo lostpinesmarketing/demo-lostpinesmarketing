@@ -27,7 +27,7 @@ docs/                Research brief, site plan, review package
 | `content/pages/contact.json` | `seo`, `heading`, `intro`, `form {heading, note, fields[] {name, label, type, required, autocomplete}, submitLabel}`, `email {heading, body}` | singleton `contact` |
 | `content/services/*.md` | frontmatter `title`, `group` (matches a `groups[].id` in home.json), `order`; body = description | collection `service` |
 
-To add a service, add a Markdown file in `content/services/` with a `group` of `build` or `reach`.
+To add a service, add a Markdown file in `content/services/` with a `group` of `get-found`, `stay-in-touch` or `connect`.
 
 ## Run locally
 ```

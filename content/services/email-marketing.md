@@ -1,6 +1,6 @@
 ---
 title: "Email Marketing"
-group: reach
+group: stay-in-touch
 order: 1
 ---
-Convert website and social media traffic into a list of loyal email subscribers with full service email marketing and automation services.
+Turn website and social media visitors into a list of loyal email subscribers, then keep them in the loop with newsletters and announcements.

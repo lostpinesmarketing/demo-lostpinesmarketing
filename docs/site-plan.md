@@ -76,3 +76,6 @@ Ratio: 16 content items. 11 kept or lightly edited (69%), plus 2 restructured fr
 - Assumed the audience is local (Bastrop area) small businesses and non-profits; the site says "business or non-profit" and "Bastrop, TX" but no service area.
 - Grouping of services is our editorial choice.
 - Open: public email or booking link for the consultation; whether to show owner name/photo; whether any work samples or reviews can be published.
+
+## Revision 1
+Services reduced to six in three groups (Get found, Stay in touch, Connect your tools), hero and closing copy rewritten to remove overlap with a competitor's site. Details and before/after table in `docs/review-package.md` (Revision 1).

@@ -18,7 +18,11 @@ export default function HomePage() {
       <section className="hero" aria-labelledby="hero-title">
         <div className="hero__copy">
           <h1 id="hero-title" className="hero__title">
-            {home.hero.heading}
+            {home.hero.heading.split(/(?<=\.)\s+/).map((line) => (
+              <span key={line} className="hero__line">
+                {line}
+              </span>
+            ))}
           </h1>
           <p className="hero__sub">{home.hero.subheading}</p>
           <Link href={home.hero.ctaHref} className="button button--charcoal">

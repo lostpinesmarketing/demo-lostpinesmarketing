@@ -130,3 +130,17 @@ What didn't:
 
 ## Recommended next step
 Pick the contact email and form service, then decide whether this demo becomes the real lostpinesmarketing.com (it can be hosted from this repo or uploaded as static files to the Namecheap account).
+
+## Revision 1 (2026-10-25, Chris's direction)
+**Copy check against Fahrenheit Marketing.** All 81 pages in fahrenheitmarketing.com's sitemap were compared with every line of demo copy, looking for shared runs of 4+ words. Matches found and rewritten:
+| Old LPM copy | Where it also appears | New copy |
+|---|---|---|
+| "Let's build something great, together." (closing CTA and Contact H1) | Fahrenheit /about/ closing CTA, word for word | "Tell us what you're working on." |
+| "Full Service Digital Marketing" (hero) | Fahrenheit blog, describing another agency (common industry phrase) | "Get found. Stay in touch. Connect your tools." |
+| "...the right person at the right time" (Digital Advertising) | Fahrenheit blog (common idiom) | Removed with the service |
+| "...schedule a free 30-minute consultation" | Fahrenheit offers "a free 30-minute strategy call" | "The first meeting is free and takes about 30 minutes." |
+After the rewrite, no 4+ word phrase is shared with Fahrenheit's site. Who wrote "Let's build something great, together" first could not be checked here (the Wayback Machine is blocked from this workspace).
+
+**Services changed.** Removed: E-Commerce & Payments, Digital Advertising, Video & Photography, Graphic Design. Added: CRM & Marketing Automation, Marketing Tech Stack Integrations (new copy, no tools or platforms named, since none are verified). Email Marketing copy edited to drop "automation" now that it has its own service. Regrouped into three: Get found (Web Development, Google Business Listings), Stay in touch (Email Marketing, Event Marketing), Connect your tools (CRM & Marketing Automation, Marketing Tech Stack Integrations).
+
+**Effect on the 80/20 rule:** by Chris's direction this revision goes past 20% new copy; roughly half the home page copy is now new. Kept from the live site: hero question, Web Development, Google Business Listings and Event Marketing descriptions, Bastrop location, free first meeting offer.

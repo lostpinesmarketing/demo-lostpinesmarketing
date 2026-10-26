@@ -1,10 +1,10 @@
 {
   "seo": {
-    "title": "Lost Pines Marketing | Full service digital marketing in Bastrop, TX",
-    "description": "Web development, email marketing, video and photography, event marketing, graphic design, e-commerce, Google Business listings, and digital advertising for businesses and non-profits."
+    "title": "Lost Pines Marketing | Digital marketing in Bastrop, TX",
+    "description": "Websites, Google Business listings, email and event marketing, CRM and marketing automation, and tech stack integrations for businesses and non-profits in Bastrop, TX."
   },
   "hero": {
-    "heading": "Full Service Digital Marketing",
+    "heading": "Get found. Stay in touch. Connect your tools.",
     "subheading": "Do you want your business or non-profit to have greater reach?",
     "ctaLabel": "Set up a free meeting",
     "ctaHref": "/contact/"
@@ -13,14 +13,19 @@
     "heading": "Our Services",
     "groups": [
       {
-        "id": "build",
-        "title": "Build your presence",
-        "description": "What people see when they find you."
+        "id": "get-found",
+        "title": "Get found",
+        "description": "The places people look for you first."
       },
       {
-        "id": "reach",
-        "title": "Reach the right people",
-        "description": "Getting your message in front of customers, members, and attendees."
+        "id": "stay-in-touch",
+        "title": "Stay in touch",
+        "description": "Turning one visit into an ongoing relationship."
+      },
+      {
+        "id": "connect",
+        "title": "Connect your tools",
+        "description": "The systems behind your marketing, set up to work together."
       }
     ]
   },
@@ -29,8 +34,8 @@
     "body": "Working with businesses and non-profits in the Lost Pines."
   },
   "cta": {
-    "heading": "Let’s build something great, together.",
-    "body": "What’s on your mind? Drop us a line to schedule a free 30-minute consultation.",
+    "heading": "Tell us what you’re working on.",
+    "body": "The first meeting is free and takes about 30 minutes. Bring your website, your next event, or the spreadsheet you’re tired of updating by hand.",
     "ctaLabel": "Set up a free meeting",
     "ctaHref": "/contact/"
   }
