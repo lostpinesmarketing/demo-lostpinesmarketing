@@ -319,7 +319,8 @@ a {
 .closing__title {
   font-size: clamp(2.8rem, 6vw, 5.25rem);
   line-height: 0.92;
-  max-width: 13ch;
+  max-width: 16ch;
+  text-wrap: balance;
 }
 .closing__body {
   display: flex;
