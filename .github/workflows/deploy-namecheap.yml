@@ -6,7 +6,7 @@
 #   FTP_SERVER    e.g. ftp.lostpinesmarketing.com
 #   FTP_USERNAME  a cPanel FTP account whose directory is public_html
 #   FTP_PASSWORD  that account's password
-# Until they exist, the deploy job is skipped instead of failing.
+# Until they exist, the site is still built (as a check) but not uploaded.
 name: Deploy to Namecheap (lostpinesmarketing.com)
 
 on:
@@ -32,11 +32,10 @@ jobs:
           FTP_SERVER: ${{ secrets.FTP_SERVER }}
         run: |
           if [ -n "$FTP_SERVER" ]; then echo "ready=true" >> "$GITHUB_OUTPUT"
-          else echo "ready=false" >> "$GITHUB_OUTPUT"; echo "::notice::FTP secrets not set; skipping Namecheap deploy."; fi
+          else echo "ready=false" >> "$GITHUB_OUTPUT"; echo "::notice::FTP secrets not set; building only, not uploading."; fi
 
   deploy:
     needs: check
-    if: needs.check.outputs.ready == 'true'
     runs-on: ubuntu-latest
     environment:
       name: production
@@ -52,9 +51,16 @@ jobs:
         env:
           SITE_ENV: production
           BASE_PATH: ""
-      - name: Add Apache rules
-        run: cp deploy/namecheap/.htaccess out/.htaccess && rm -f out/.nojekyll
+      - name: Add Apache rules and check output
+        run: |
+          cp deploy/namecheap/.htaccess out/.htaccess && rm -f out/.nojekyll
+          test -f out/index.html && test -f out/contact/index.html && test -f out/404.html
+          ! grep -q '/demo-lostpinesmarketing' out/index.html
+          ! grep -q 'demo-notice' out/index.html
+          grep -q 'contact@lostpinesmarketing.com' out/contact/index.html
+          grep -q 'content="index, follow"' out/index.html
       - name: Upload to public_html
+        if: needs.check.outputs.ready == 'true'
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}

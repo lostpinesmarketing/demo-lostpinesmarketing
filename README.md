@@ -42,7 +42,7 @@ Build targets (set by environment variables in the workflows):
 ## Deploy
 Every push to `main` runs two workflows:
 - `deploy.yml` publishes the demo preview to GitHub Pages (Settings > Pages > Source: GitHub Actions).
-- `deploy-namecheap.yml` builds the production site and uploads it to `public_html` on Namecheap over FTPS, adding `deploy/namecheap/.htaccess` (https + no-www redirect, 404 page, leaves `.well-known/` alone for SSL renewals). It only uploads changed files. It is skipped until the `FTP_SERVER`, `FTP_USERNAME` and `FTP_PASSWORD` repository secrets exist.
+- `deploy-namecheap.yml` builds the production site and uploads it to `public_html` on Namecheap over FTPS, adding `deploy/namecheap/.htaccess` (https + no-www redirect, 404 page, leaves `.well-known/` alone for SSL renewals). It only uploads changed files. Until the `FTP_SERVER`, `FTP_USERNAME` and `FTP_PASSWORD` repository secrets exist, it builds and checks the production output but does not upload.
 
 To publish a change: edit, commit, push to `main`. To redeploy without a change: Actions > "Deploy to Namecheap" > Run workflow.
 
