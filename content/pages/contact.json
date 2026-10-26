@@ -6,8 +6,9 @@
   "heading": "Tell us what you’re working on.",
   "intro": "The first meeting is free and takes about 30 minutes. Send a note and we’ll find a time that works.",
   "form": {
+    "enabled": false,
     "heading": "Send a message",
-    "note": "This is a demo form. It does not send or store anything yet.",
+    "note": "Turn this on once a form service (for example Formspree) is connected.",
     "fields": [
       {
         "name": "name",
@@ -43,5 +44,11 @@
   "email": {
     "heading": "Have a general question?",
     "body": "We’re just an email away."
+  },
+  "emailPanel": {
+    "heading": "Send us a note",
+    "body": "Tell us a little about your business or organization and what you need help with.",
+    "buttonLabel": "Email us",
+    "subject": "Free first meeting"
   }
 }

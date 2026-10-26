@@ -1,13 +1,22 @@
 {
   "siteName": "Lost Pines Marketing",
   "location": "Bastrop, TX",
-  "email": "",
+  "email": "contact@lostpinesmarketing.com",
   "emailPlaceholder": "PLACEHOLDER: public email address",
   "nav": [
-    { "label": "Services", "href": "/#services" },
-    { "label": "Contact", "href": "/contact/" }
+    {
+      "label": "Services",
+      "href": "/#services"
+    },
+    {
+      "label": "Contact",
+      "href": "/contact/"
+    }
   ],
-  "headerCta": { "label": "Book a free consultation", "href": "/contact/" },
+  "headerCta": {
+    "label": "Book a free consultation",
+    "href": "/contact/"
+  },
   "copyright": "Lost Pines Marketing",
   "demoNotice": "Demo site built by Lost Pines Marketing to preview a redesign. Not the live website."
 }

@@ -1,0 +1,65 @@
+# Production deploy: builds the site for the root of lostpinesmarketing.com and
+# uploads it to Namecheap over FTPS. Runs on every push to main, or by hand from
+# the Actions tab ("Run workflow").
+#
+# Needs three repository secrets (Settings > Secrets and variables > Actions):
+#   FTP_SERVER    e.g. ftp.lostpinesmarketing.com
+#   FTP_USERNAME  a cPanel FTP account whose directory is public_html
+#   FTP_PASSWORD  that account's password
+# Until they exist, the deploy job is skipped instead of failing.
+name: Deploy to Namecheap (lostpinesmarketing.com)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: namecheap
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    outputs:
+      ready: ${{ steps.secrets.outputs.ready }}
+    steps:
+      - id: secrets
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+        run: |
+          if [ -n "$FTP_SERVER" ]; then echo "ready=true" >> "$GITHUB_OUTPUT"
+          else echo "ready=false" >> "$GITHUB_OUTPUT"; echo "::notice::FTP secrets not set; skipping Namecheap deploy."; fi
+
+  deploy:
+    needs: check
+    if: needs.check.outputs.ready == 'true'
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://lostpinesmarketing.com/
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+        env:
+          SITE_ENV: production
+          BASE_PATH: ""
+      - name: Add Apache rules
+        run: cp deploy/namecheap/.htaccess out/.htaccess && rm -f out/.nojekyll
+      - name: Upload to public_html
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./out/
+          server-dir: ./

@@ -10,6 +10,9 @@ export function generateMetadata(): Metadata {
 export default function ContactPage() {
   const page = getContact();
   const settings = getSettings();
+  const mailto = settings.email
+    ? `mailto:${settings.email}?subject=${encodeURIComponent(page.emailPanel.subject)}`
+    : '';
 
   return (
     <>
@@ -31,39 +34,62 @@ export default function ContactPage() {
 
       <section className="contact" aria-label="Contact options">
         <div className="wrap contact__grid">
-          <form className="contact-form" aria-labelledby="form-title" aria-describedby="form-note">
-            <h2 id="form-title">{page.form.heading}</h2>
-            <p id="form-note" className="contact-form__note">
-              {page.form.note}
-            </p>
-            {page.form.fields.map((f) => (
-              <div className="field" key={f.name}>
-                <label htmlFor={`f-${f.name}`}>
-                  {f.label}
-                  {f.required ? null : <span className="field__optional"> (optional)</span>}
-                </label>
-                {f.type === 'textarea' ? (
-                  <textarea id={`f-${f.name}`} name={f.name} rows={5} autoComplete={f.autocomplete} />
-                ) : (
-                  <input id={`f-${f.name}`} name={f.name} type={f.type} autoComplete={f.autocomplete} />
-                )}
-              </div>
-            ))}
-            <button type="button" className="button button--charcoal" disabled aria-describedby="form-note">
-              {page.form.submitLabel}
-            </button>
-          </form>
+          {page.form.enabled ? (
+            <form className="contact-form" aria-labelledby="form-title" aria-describedby="form-note">
+              <h2 id="form-title">{page.form.heading}</h2>
+              <p id="form-note" className="contact-form__note">
+                {page.form.note}
+              </p>
+              {page.form.fields.map((f) => (
+                <div className="field" key={f.name}>
+                  <label htmlFor={`f-${f.name}`}>
+                    {f.label}
+                    {f.required ? null : <span className="field__optional"> (optional)</span>}
+                  </label>
+                  {f.type === 'textarea' ? (
+                    <textarea id={`f-${f.name}`} name={f.name} rows={5} autoComplete={f.autocomplete} />
+                  ) : (
+                    <input id={`f-${f.name}`} name={f.name} type={f.type} autoComplete={f.autocomplete} />
+                  )}
+                </div>
+              ))}
+              <button type="button" className="button button--charcoal" disabled aria-describedby="form-note">
+                {page.form.submitLabel}
+              </button>
+            </form>
+          ) : (
+            <div className="contact-form">
+              <h2>{page.emailPanel.heading}</h2>
+              <p className="contact-form__note">{page.emailPanel.body}</p>
+              {settings.email ? (
+                <>
+                  <p className="contact-email">
+                    <a href={mailto}>{settings.email}</a>
+                  </p>
+                  <a href={mailto} className="button button--charcoal">
+                    {page.emailPanel.buttonLabel}
+                  </a>
+                </>
+              ) : (
+                <p className="placeholder">{settings.emailPlaceholder}</p>
+              )}
+            </div>
+          )}
 
           <aside className="contact-aside">
-            <h2>{page.email.heading}</h2>
-            <p>{page.email.body}</p>
-            {settings.email ? (
-              <p>
-                <a href={`mailto:${settings.email}`}>{settings.email}</a>
-              </p>
-            ) : (
-              <p className="placeholder">{settings.emailPlaceholder}</p>
-            )}
+            {page.form.enabled ? (
+              <>
+                <h2>{page.email.heading}</h2>
+                <p>{page.email.body}</p>
+                {settings.email ? (
+                  <p>
+                    <a href={`mailto:${settings.email}`}>{settings.email}</a>
+                  </p>
+                ) : (
+                  <p className="placeholder">{settings.emailPlaceholder}</p>
+                )}
+              </>
+            ) : null}
             <p className="contact-aside__location">{settings.location}</p>
           </aside>
         </div>

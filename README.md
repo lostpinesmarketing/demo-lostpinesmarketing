@@ -35,15 +35,19 @@ npm install
 npm run dev      # http://localhost:3000
 npm run build    # static output in /out
 ```
-In production builds the base path is `/demo-lostpinesmarketing` (set from the repo name by the workflow).
+Build targets (set by environment variables in the workflows):
+- Demo, GitHub Pages: base path `/demo-lostpinesmarketing`, `noindex`, demo notice in the footer.
+- Production, lostpinesmarketing.com: `SITE_ENV=production BASE_PATH=""` gives root paths, indexable pages, no demo notice.
 
 ## Deploy
-1. Push to `main` on `lostpinesmarketing/demo-lostpinesmarketing`.
-2. In the repo, Settings > Pages > Source: GitHub Actions.
-3. The workflow builds and publishes to the demo URL above.
+Every push to `main` runs two workflows:
+- `deploy.yml` publishes the demo preview to GitHub Pages (Settings > Pages > Source: GitHub Actions).
+- `deploy-namecheap.yml` builds the production site and uploads it to `public_html` on Namecheap over FTPS, adding `deploy/namecheap/.htaccess` (https + no-www redirect, 404 page, leaves `.well-known/` alone for SSL renewals). It only uploads changed files. It is skipped until the `FTP_SERVER`, `FTP_USERNAME` and `FTP_PASSWORD` repository secrets exist.
+
+To publish a change: edit, commit, push to `main`. To redeploy without a change: Actions > "Deploy to Namecheap" > Run workflow.
 
 ## Images and placeholders
-Images are the brand's own files from the public site's media library: logo (white and charcoal), heptagon pine badge (sage and charcoal), pine repeat pattern, favicon. No stock photography is used. The contact email is a labeled PLACEHOLDER, and the contact form is a non-functional demo (its submit button is disabled; nothing is sent or stored).
+Images are the brand's own files from the public site's media library: logo (white and charcoal), heptagon pine badge (sage and charcoal), pine repeat pattern, favicon. No stock photography is used. The Contact page uses the public email in `content/settings.json`. A message form is built but switched off (`form.enabled: false` in `content/pages/contact.json`) until a form service is connected.
 
 ## Moving to Tina CMS later
 Live editing requires Tina Cloud or a self-hosted backend, since GitHub Pages is static. Add the Tina schema using the content model above. Service descriptions are plain text today; switch the body to rich-text if formatting is needed.

@@ -1,0 +1,16 @@
+# lostpinesmarketing.com: static Next.js export served by Namecheap shared hosting.
+# Copied into the build output by .github/workflows/deploy-namecheap.yml.
+
+DirectoryIndex index.html
+Options -Indexes
+ErrorDocument 404 /404.html
+
+RewriteEngine On
+
+# Leave Let's Encrypt (acme.sh) challenge files alone so SSL renewals keep working.
+RewriteRule ^\.well-known/ - [L]
+
+# One canonical address: https, no www.
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^ https://lostpinesmarketing.com%{REQUEST_URI} [L,R=301]

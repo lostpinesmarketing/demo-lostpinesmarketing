@@ -380,6 +380,17 @@ a {
   color: var(--ink-soft);
   margin-bottom: 28px;
 }
+.contact-email {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 3.4vw, 2.25rem);
+  line-height: 1.1;
+  margin-bottom: 24px;
+  overflow-wrap: anywhere;
+}
+.contact-email a {
+  color: var(--charcoal);
+}
 .field {
   margin-bottom: 22px;
 }

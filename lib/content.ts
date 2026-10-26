@@ -46,7 +46,8 @@ export type ContactPage = {
   seo: Seo;
   heading: string;
   intro: string;
-  form: { heading: string; note: string; fields: FormField[]; submitLabel: string };
+  form: { enabled: boolean; heading: string; note: string; fields: FormField[]; submitLabel: string };
+  emailPanel: { heading: string; body: string; buttonLabel: string; subject: string };
   email: { heading: string; body: string };
 };
 

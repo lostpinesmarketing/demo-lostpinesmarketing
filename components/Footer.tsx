@@ -24,7 +24,9 @@ export default function Footer({ settings }: { settings: Settings }) {
           Copyright © {year} {settings.copyright}
         </p>
       </div>
-      <p className="demo-notice">{settings.demoNotice}</p>
+      {process.env.NEXT_PUBLIC_SITE_ENV === 'production' ? null : (
+        <p className="demo-notice">{settings.demoNotice}</p>
+      )}
     </footer>
   );
 }
